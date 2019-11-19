@@ -1,4 +1,4 @@
-var abiContrato = [
+var abiContrato = [ //ABI É A INTERFACE EM JS DO SMART CONTRACT ==> remix fornece o ABI na janela de compilação
 	{
 		"constant": false,
 		"inputs": [],
