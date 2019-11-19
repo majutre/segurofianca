@@ -15,16 +15,21 @@
     <script charset="utf-8"  src="https://cdn.ethers.io/scripts/ethers-v4.min.js" type="text/javascript"></script>
     <script src="javascript/abi.js"></script>    
     <script>
-        var status;
+        var status; //inicialmente em branco
         var campoStatus = document.getElementById("campoStatus"); 
         var enderecoContrato = "0x891710b3475b3076Dd1F9C6a6A9b1f87BA5e0517";
-        var provedor = ethers.getDefaultProvider('rinkeby');
+       /*quem faz a conexão com o Ethereum; 
+       .getDefaultProvider diz qual é o provedor. Se fosse rede principal = mainnet*/
+        var provedor = ethers.getDefaultProvider('rinkeby'); /
+        //objeto/mapeamento do contrato: endereço, abi e o provedor.
         var contrato = new ethers.Contract(enderecoContrato, abiContrato, provedor);
-        contrato.statusPagamentoAluguel()
-            .then( (resultado) => {
+                                                                
+        contrato.statusPagamentoAluguel() //variavel pública dentro do contrato. Mesmo sendo variável, chama como se fosse função.
+            .then( (resultado) => {       //.then == quando a promessa for cumprida, chama uma função.  
+                                          // array function: "(parâmetro) => {}" em vez de function XPTO(parâmetro){}
                 campoStatus.innerHTML = resultado;
             })
-            .catch( (err) => {
+            .catch( (err) => {              //"deu ruim"
                 console.error(err);
                 campoStatus.innerHTML = err;
             });                     
